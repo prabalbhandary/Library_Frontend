@@ -1,0 +1,15 @@
+.home-page{
+    width: 100%;
+    min-height: 91.5vh;
+    max-height: auto;
+}
+.view-book{
+    border: 1px solid #fff;
+    color: #fff;
+}
+.view-book:hover{
+    color: #fff;
+}
+.home-img{
+    width: 29.5vw;
+}
