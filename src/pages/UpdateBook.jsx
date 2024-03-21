@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-const UpdateBook = ({ bookId }) => {
+const UpdateBook = ({ _id }) => {
   const [data, setData] = useState({
     bookName: "",
     author: "",
@@ -13,14 +13,14 @@ const UpdateBook = ({ bookId }) => {
   useEffect(() => {
     const fetchBook = async () => {
       try {
-        const response = await axios.get(`http://localhost:4000/api/v1/books/${bookId}`);
+        const response = await axios.get(`http://localhost:4000/api/v1/books/:${_id}`);
         setData(response.data); // Assuming the response.data structure matches the initial state
       } catch (error) {
         console.error("Error fetching book:", error);
       }
     };
     fetchBook();
-  }, [bookId]);
+  }, [_id]);
 
   const change = (e) => {
     const { name, value } = e.target;
@@ -29,7 +29,7 @@ const UpdateBook = ({ bookId }) => {
 
   const submit = async (e) => {
     e.preventDefault();
-    await axios.put(`http://localhost:4000/api/v1/books/${bookId}`, data)
+    await axios.put(`http://localhost:4000/api/v1/books/:${_id}`, data)
       .then((res) => {
         alert(res.data.message);
       });
